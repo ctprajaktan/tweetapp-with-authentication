@@ -1,0 +1,37 @@
+<div class="loginForm" ng-if="!isLoggedIn">
+    <div class="row" ng-if="errorMessage">
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{errorMessage}}
+        </div>
+    </div>
+    <form>
+        <div class="row">
+
+            <div class="col-md-12">
+                <span>User Name</span>
+                <input type="text" ng-model="loginModel.username" class="form-control" required>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <span>Password</span>
+                <input type="password" ng-model="loginModel.password" class="form-control" required>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <input class="btn btn-primary" type="submit" value="Submit" ng-click="login()">
+                    <input class="btn btn-default" type="submit" value="Register" ng-click="createUser()">
+                </center>
+            </div>
+
+        </div>
+        <br>
+        <br>
+    </form>
+</div>
+<div ng-if="isLoggedIn">You are aleady logged in</div>

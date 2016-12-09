@@ -1,0 +1,2 @@
+require("./tweet");
+require("./user");

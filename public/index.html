@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Tweet App</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/lib/bower_components/angular/angular.js"></script>
+    <script src="js/lib/bower_components/ng-file-upload/ng-file-upload-all.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+
+    <!-- <script src="js/lib/bower_components/socket.io-client/socket.io.js"></script> -->
+    <script src="js/lib/bower_components/socket.io-client/dist/socket.io.js"></script>
+    <!-- <script src="js/lib/bower_components/angular-socket-io/mock/socket-io.js"></script> -->
+    <script src="js/lib/bower_components/angular-socket-io/socket.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/services/apiService.js"></script>
+    <script src="js/services/loginService.js"></script>
+    <script src="js/services/authenticationService.js"></script>
+    <script src="js/services/sessionInjector.js"></script>
+    <script src="js/services/configService.js"></script>
+    <script src="js/services/socketService.js"></script>
+    <script src="js/controller/navController.js"></script>
+    <script src="js/controller/loginController.js"></script>
+    <script src="js/controller/tweetController.js"></script>
+</head>
+
+<body ng-app="TweetApp">
+
+    <header ng-controller="navController">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header"> <a class="navbar-brand" href="#/">Tweet</a></div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-if="!isLoggedIn"><a href="#login">Sign-In</a></li>
+                    <li ng-if="isLoggedIn"><a>Hi {{currentUser}}</a></li>
+                    <li ng-if="isLoggedIn"><a href="javascript:void(0)" ng-click="logout()">Sign-Out</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div ng-view></div>
+    </div>
+
+</body>
+
+</html>

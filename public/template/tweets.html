@@ -1,0 +1,56 @@
+<div class="row" ng-if="errorMessage">
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{errorMessage}}
+    </div>
+</div>
+<div class="row">
+    <div ng-class="isLoggedIn() ? 'col-md-8':'col-md-12'">
+        <div ng-repeat="tweet in tweets |orderBy: '-createdAt'">
+            <div class="row">
+                <div class="col-md-2" ng-if="tweet.image">
+                    <div class="col-md-12"><img class="tweet-image" ng-src="uploads/{{tweet.image}}" height="100" width="100"></div>
+                </div>
+                <div ng-class="{'col-md-10':tweet.image,'col-md-12':!tweet.image}">
+                    <span class="tweet-header">{{tweet.heading}}</span>
+                    <span class="tweet-createdby">Created By: <span ng-if="getLoggedInUser()==tweet.createdBy">me</span><span ng-if="getLoggedInUser()!=tweet.createdBy">{{tweet.createdBy}}</span></span>
+                    <br/>
+                    <span class="tweet-description">{{tweet.description}}</span>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="col-md-4" ng-if="isLoggedIn()">
+        <form ng-submit="createTweet()">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="text" ng-model="tweet.heading" class="form-control" placeholder="Heading" required>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <textarea rows="10" cols="30" ng-model="tweet.description" class="form-control" placeholder="Description" required></textarea>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="file" ngf-select ng-model="tweet.imagefile" name="images" class="btn btn-default">
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
+            </div>
+            <br>
+            <br>
+        </form>
+    </div>
+
+</div>
